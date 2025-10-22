@@ -4,147 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piyush Punjwani | Interactive Product & UX Designer Resume</title>
-    <!-- Include Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Include Heroicons for icons -->
-    <script src="https://unpkg.com/heroicons"></script>
-    <!-- Include Three.js CDN for the 3D background -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <style>
-        /* BASE STYLES & GLASSMORHPISM */
-        :root {
-            /* Define primary blue/indigo accent color */
-            --accent-blue: #6366F1; /* Indigo-500 */
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #E5E7EB; /* Light Gray text for Dark Theme */
-            background-color: #0F172A; /* Slate-900 for fallback */
-            perspective: 1000px; /* For subtle 3D transformations */
-            overflow-x: hidden;
-        }
-
-        /* Glassmorphism Effect */
-        .glass-card {
-            background-color: rgba(255, 255, 255, 0.05); /* Very light, translucent white */
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.4);
-            transition: all 0.3s ease-in-out;
-            transform-style: preserve-3d;
-        }
-
-        /* Subtle Hover Effect for Cards (3D Tilt) */
-        .glass-card:hover {
-            box-shadow: 0 10px 40px 0 rgba(31, 38, 135, 0.6);
-            transform: translateY(-2px) translateZ(10px);
-        }
-
-        /* Style for the Three.js background canvas */
-        #three-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-blue);
-            border-radius: 4px;
-        }
-
-        /* Scroll Animation (Initial State) */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .scroll-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Progress Bar Styling */
-        .progress-bar {
-            height: 6px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            background-color: var(--accent-blue);
-            height: 100%;
-            transition: width 1s ease-out;
-        }
-        
-        /* Modal Backdrop */
-        .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.85); /* Darker blur for focus */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-900 antialiased">
 
-    <!-- 1. THREE.JS DYNAMIC BACKGROUND CONTAINER -->
-    <div id="three-container"></div>
+    <div id="spotlight-container"></div>
     
-    <!-- 2. FIXED HEADER (Contact & Download) -->
     <header class="fixed top-0 left-0 w-full z-40 p-4 backdrop-blur-sm bg-gray-900/50 border-b border-gray-800">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex space-x-6 text-sm">
-                <!-- Email -->
                 <a href="mailto:Piyushap6060@gmail.com" class="text-indigo-400 hover:text-white transition duration-200 flex items-center">
-                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7"></path></svg>
+                    <span class="material-symbols-rounded w-5 h-5 mr-1" aria-hidden="true">mail</span>
                     Piyushap6060@gmail.com
                 </a>
-                <!-- Mobile Number -->
                 <a href="tel:+919110240603" class="text-indigo-400 hover:text-white transition duration-200 hidden sm:flex items-center">
-                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h14a2 2 0 012 2v7a2 2 0 01-2 2h-1a2 2 0 00-2 2v2a2 2 0 002 2h1a2 2 0 002-2v-2a2 2 0 00-2-2h-1m-14 0h-1a2 2 0 00-2 2v2a2 2 0 002 2h1a2 2 0 002-2v-2a2 2 0 00-2-2z"></path></svg>
+                    <span class="material-symbols-rounded w-5 h-5 mr-1" aria-hidden="true">call</span>
                     +91 91102 40603
                 </a>
-                <!-- LinkedIn -->
                 <a href="https://www.linkedin.com/in/piyush-uiux/" target="_blank" class="text-indigo-400 hover:text-white transition duration-200 flex items-center">
-                    <svg class="w-5 h-5 mr-1" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.263-4 0v5.604h-3v-11h3v1.765c1.395-2.535 5-2.392 5 2.348v6.887z"/></svg>
+                    <svg class="w-5 h-5 mr-1" viewBox="0 0 640 640" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM165 266.2L231.5 266.2L231.5 480L165 480L165 266.2zM236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160C219.5 160 236.7 177.2 236.7 198.5zM413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480L413.9 480z"/></svg>
                     LinkedIn
                 </a>
             </div>
             
-            <!-- Download Button -->
             <button onclick="document.getElementById('download-modal').classList.remove('hidden')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 px-4 rounded-full transition duration-300 shadow-xl">
-                <svg class="w-5 h-5 inline-block mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                <span class="material-symbols-rounded w-5 h-5 inline-block mr-2" aria-hidden="true">download</span>
                 Download Resume
             </button>
         </div>
     </header>
 
-    <!-- 3. MAIN SCROLLABLE GLASS CARD CONTAINER -->
     <main class="relative pt-24 pb-12 flex justify-center min-h-screen">
         <div class="glass-card w-full max-w-4xl p-8 lg:p-12 rounded-3xl mx-4 my-8 scroll-content">
             
-            <!-- 3.1. HERO SECTION -->
             <section id="hero" class="mb-16">
                 <h1 class="text-5xl lg:text-7xl font-extrabold text-white mb-2">Piyush Punjwani</h1>
                 <h2 class="text-3xl lg:text-4xl font-light text-indigo-400 mb-6">Product & UX Designer</h2>
                 
-                <!-- Full Profile Summary as Value Proposition -->
                 <p id="summary-text" class="text-lg lg:text-xl text-gray-300 leading-relaxed scroll-animate">
                     Product Designer with 1 year of experience delivering **end-to-end UX/UI solutions** for e-commerce, healthcare, and B2B cybersecurity platforms. Specialized in transforming **user insights** into intuitive, **high-fidelity prototypes in Figma** and creating **scalable design systems** from the ground up.
                 </p>
 
-                <!-- Additional Contact/Social Links -->
                 <div class="mt-8 flex space-x-4">
                     <a href="https://www.piyush-uxd.com/" target="_blank" class="px-5 py-2 text-white bg-indigo-600 rounded-full hover:bg-indigo-500 transition duration-300 text-sm font-medium shadow-md">Portfolio Homepage</a>
                     <a href="#" class="px-5 py-2 text-indigo-400 border border-indigo-400 rounded-full hover:bg-indigo-600 hover:text-white transition duration-300 text-sm font-medium">Instagram</a>
@@ -154,17 +56,14 @@
             
             <hr class="border-gray-700 my-10">
 
-            <!-- 3.2. PROFESSIONAL EXPERIENCE -->
             <section id="experience" class="mb-16 scroll-animate">
                 <div class="relative">
                     <h2 class="text-3xl font-bold text-white mb-8">Professional Experience</h2>
-                    <!-- 3D Sticker: Laptop/Monitor -->
-                    <div class="absolute -top-10 -right-10 w-24 h-24 text-indigo-500 opacity-60" style="transform: translateZ(50px) rotateY(15deg);">
-                        <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1.5-1.5h-.75M21 12l-4.5 4.5M3 12l4.5 4.5M10.5 16.5H1.5M22.5 16.5H13.5M15 4.5H9c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zM9 13.5h6"/></svg>
+                    <div class="absolute -top-10 -right-10 w-24 h-24 opacity-80" style="transform: translateZ(50px) rotateY(15deg);">
+                        <img src="Laptop.jpg" alt="Laptop Sticker" class="w-full h-full object-contain">
                     </div>
                 </div>
 
-                <!-- Role 1: ICETEA MEDIA GROUP -->
                 <div class="glass-card p-6 mb-8 rounded-xl shadow-lg border-l-4 border-indigo-500 scroll-animate">
                     <h3 class="text-xl font-semibold text-white">Intern, UI/UX Design @ ICETEA MEDIA GROUP, Bangalore</h3>
                     <p class="text-sm text-gray-400 mb-4">January 2023 - June 2023</p>
@@ -176,7 +75,6 @@
                     </ul>
                 </div>
 
-                <!-- Role 2: Acalvio Technologies -->
                 <div class="glass-card p-6 rounded-xl shadow-lg border-l-4 border-indigo-500 scroll-animate">
                     <h3 class="text-xl font-semibold text-white">Intern, UI Design and Development @ Acalvio Technologies, Bangalore</h3>
                     <p class="text-sm text-gray-400 mb-4">April 2022 - June 2022</p>
@@ -191,7 +89,6 @@
 
             <hr class="border-gray-700 my-10">
 
-            <!-- 3.3. SKILLS & TOOLS (Summarized) -->
             <section id="skills" class="mb-16 scroll-animate">
                 <h2 class="text-3xl font-bold text-white mb-8">Core Skills & Tools</h2>
                 <div class="flex flex-wrap gap-3 mb-6">
@@ -202,7 +99,6 @@
                     <span class="bg-indigo-600/50 text-white text-sm px-3 py-1 rounded-full border border-indigo-500 shadow-md">Prototyping & Wireframing</span>
                 </div>
 
-                <!-- CTA to View All Skills (Triggers Modal) -->
                 <button onclick="document.getElementById('skills-modal').classList.remove('hidden')" class="text-indigo-400 hover:text-white transition duration-300 mt-4 flex items-center group">
                     View All 54 Categorized Skills & Software Proficiency 
                     <svg class="w-5 h-5 ml-1 transform group-hover:translate-x-1 transition duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
@@ -211,17 +107,14 @@
 
             <hr class="border-gray-700 my-10">
 
-            <!-- 3.4. EDUCATION & VR CASE STUDIES -->
             <section id="education" class="mb-16 scroll-animate">
                 <div class="relative">
                     <h2 class="text-3xl font-bold text-white mb-8">Education</h2>
-                    <!-- 3D Sticker: VR Goggles -->
-                    <div class="absolute -top-10 -left-10 w-24 h-24 text-indigo-500 opacity-60" style="transform: translateZ(50px) rotateY(-15deg);">
-                        <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM19.5 12h-2.5m-10 0H4.5m15-6H4.5m15 12H4.5m15-6a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <div class="absolute -top-10 -left-10 w-24 h-24 opacity-80" style="transform: translateZ(50px) rotateY(-15deg);">
+                        <img src="VR Headset.jpg" alt="VR Headset Sticker" class="w-full h-full object-contain">
                     </div>
                 </div>
 
-                <!-- Degree 1: Loughborough University -->
                 <div class="glass-card p-6 mb-8 rounded-xl shadow-lg scroll-animate">
                     <h3 class="text-xl font-semibold text-white">MSc User Experience Design</h3>
                     <p class="text-lg text-indigo-400">Loughborough University, UK</p>
@@ -234,7 +127,6 @@
                     </div>
                 </div>
 
-                <!-- Degree 2: MAHE University -->
                 <div class="glass-card p-6 rounded-xl shadow-lg scroll-animate">
                     <h3 class="text-xl font-semibold text-white">BVoc User Interface & Interaction Engineering</h3>
                     <p class="text-lg text-indigo-400">Srishti Manipal Institute (MAHE University)</p>
@@ -243,12 +135,10 @@
             </section>
 
             <hr class="border-gray-700 my-10">
-            
-            <!-- 3.5. MY WORK / CASE STUDIES (Horizontal Carousel) -->
+
             <section id="work" class="mb-16 scroll-animate">
                 <h2 class="text-3xl font-bold text-white mb-8">My Work & Case Studies</h2>
                 
-                <!-- Filter Tabs -->
                 <div class="flex space-x-3 mb-6 border-b border-gray-700 pb-3">
                     <button class="px-4 py-1.5 rounded-full bg-indigo-600 text-white text-sm font-medium transition duration-200">All Projects</button>
                     <button class="px-4 py-1.5 rounded-full text-indigo-400 hover:bg-indigo-800/30 text-sm font-medium transition duration-200">VR</button>
@@ -256,49 +146,51 @@
                     <button class="px-4 py-1.5 rounded-full text-indigo-400 hover:bg-indigo-800/30 text-sm font-medium transition duration-200">AI / Coach</button>
                 </div>
 
-                <!-- Horizontal Scroll Container (3D Perspective) -->
-                <div id="project-carousel" class="flex overflow-x-auto space-x-6 pb-4 cursor-grab active:cursor-grabbing">
+                <div id="project-carousel" class="flex overflow-x-auto pb-4 cursor-grab active:cursor-grabbing space-x-3">
                     
-                    <!-- Featured Card (Larger) -->
-                    <div class="glass-card min-w-[300px] lg:min-w-[400px] p-6 rounded-xl shadow-xl border-t-4 border-yellow-400 flex-shrink-0" style="transform: translateZ(15px);">
+                    <div class="glass-card project-card-4-3 p-6 rounded-xl shadow-xl border-t-4 border-yellow-400 flex-shrink-0" style="transform: translateZ(15px);">
                         <h3 class="text-xl font-semibold text-white mb-1">Featured: VR Dissertation</h3>
                         <p class="text-sm text-gray-400 mb-4">**Virtual Reality for Education**</p>
                         <p class="text-gray-300 text-sm mb-4">A comprehensive UX project on designing and testing a VR educational experience. Showcase of deep research and high-fidelity prototyping.</p>
                         <a href="https://www.piyush-uxd.com/my-work/virtual-reality-for-education" target="_blank" class="text-indigo-400 hover:text-white font-medium flex items-center">View Case Study &rarr;</a>
                     </div>
                     
-                    <!-- Other Cards -->
-                    <div class="glass-card min-w-[280px] p-6 rounded-xl shadow-lg flex-shrink-0" style="transform: translateZ(5px);">
+                    <div class="glass-card project-card-1-1 p-6 rounded-xl shadow-lg flex-shrink-0" style="transform: translateZ(5px);">
                         <h3 class="text-xl font-semibold text-white mb-1">VR Flood Risk</h3>
                         <p class="text-sm text-gray-400 mb-4">**Experiencing Climate Risk in VR**</p>
                         <a href="https://www.piyush-uxd.com/my-work/experience-flood-risk-in-vr" target="_blank" class="text-indigo-400 hover:text-white font-medium flex items-center">View Case Study &rarr;</a>
                     </div>
 
-                    <div class="glass-card min-w-[280px] p-6 rounded-xl shadow-lg flex-shrink-0" style="transform: translateZ(5px);">
+                    <div class="glass-card project-card-1-1 p-6 rounded-xl shadow-lg flex-shrink-0" style="transform: translateZ(5px);">
                         <h3 class="text-xl font-semibold text-white mb-1">Career Coach</h3>
                         <p class="text-sm text-gray-400 mb-4">**Education & Career Guidance Platform**</p>
                         <a href="https://www.piyush-uxd.com/my-work/education-and-career-coach" target="_blank" class="text-indigo-400 hover:text-white font-medium flex items-center">View Case Study &rarr;</a>
                     </div>
 
-                    <div class="glass-card min-w-[280px] p-6 rounded-xl shadow-lg flex-shrink-0" style="transform: translateZ(5px);">
+                    <div class="glass-card project-card-1-1 p-6 rounded-xl shadow-lg flex-shrink-0" style="transform: translateZ(5px);">
                         <h3 class="text-xl font-semibold text-white mb-1">KREO Redesign</h3>
                         <p class="text-sm text-gray-400 mb-4">Website UI/UX Overhaul</p>
                         <a href="#" class="text-indigo-400 hover:text-white font-medium flex items-center">View Project &rarr;</a>
                     </div>
-                    <!-- (Add more project cards here as needed) -->
+                </div>
 
+                <div id="carousel-controls" class="flex justify-center space-x-9 mt-6">
+                    <button class="carousel-prev-btn text-indigo-400 hover:text-white transition duration-200">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8m-9 12a9 9 0 110-18 9 9 0 010 18z"></path></svg>
+                    </button>
+                    <button class="carousel-next-btn text-indigo-400 hover:text-white transition duration-200">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H6m-2 12a9 9 0 110-18 9 9 0 010 18z"></path></svg>
+                    </button>
                 </div>
             </section>
 
             <hr class="border-gray-700 my-10">
 
-            <!-- 3.6. ABOUT ME (Narrative & Factoids) -->
             <section id="about" class="mb-16 scroll-animate">
                 <div class="relative">
                     <h2 class="text-3xl font-bold text-white mb-8">About Me</h2>
-                    <!-- 3D Sticker: Books/Headphones -->
-                    <div class="absolute -bottom-10 -right-10 w-24 h-24 text-indigo-500 opacity-60" style="transform: translateZ(50px) rotateY(-10deg);">
-                         <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354l-7.25 3.321-1.75-3.321 9-4.354 9 4.354-1.75 3.321-7.25-3.321zM5.5 10.75h13M5.5 15.25h13M5.5 19.75h13m0-9v9m-13-9v9"/></svg>
+                    <div class="absolute -bottom-10 -right-10 w-24 h-24 opacity-80" style="transform: translateZ(50px) rotateY(-10deg);">
+                         <img src="Books.jpg" alt="Books Sticker" class="w-full h-full object-contain">
                     </div>
                 </div>
 
@@ -318,9 +210,6 @@
         </div>
     </main>
 
-    <!-- 4. MODALS (Skills and Download) -->
-    
-    <!-- Skills & Tools Modal -->
     <div id="skills-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
         <div class="glass-card w-full max-w-4xl p-8 rounded-3xl overflow-y-auto max-h-[90vh]">
             <div class="flex justify-between items-start mb-6">
@@ -330,44 +219,12 @@
                 </button>
             </div>
 
-            <!-- Proficiency Section -->
             <h3 class="text-xl font-semibold text-indigo-400 mb-4">Software Proficiency (Score / 10)</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 mb-10">
-                <!-- Data for Proficiency Bars (Generated via JS) -->
-                <script>
-                    const toolScores = {
-                        'Google Workspace': 10, 'Figma': 9, 'Adobe Color': 9, 'Miro Collaboration Platform': 8,
-                        'Adobe XD': 8, 'Jira': 7, 'Adobe Firefly': 7, 'Slack': 6, 'After Effects': 6, 
-                        'Adobe Premiere Pro': 6, 'Adobe Photoshop': 6, 'Adobe Illustrator': 6, 'Blender': 5
-                    };
-                    // Function to safely inject proficiency bars 
-                    function renderProficiencyBars(scores) {
-                        const container = document.getElementById('proficiency-container');
-                        if (!container) return;
-
-                        const html = Object.entries(scores).map(([tool, score]) => `
-                            <div class="text-sm">
-                                <p>${tool} (${score}/10)</p>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: ${score * 10}%;"></div>
-                                </div>
-                            </div>
-                        `).join('');
-                        container.innerHTML = html;
-                    }
-                    // Since this script runs when the modal is first opened (via its position in the HTML) or on load,
-                    // we call it here to ensure the data structure exists for the modal.
-                    // A final call is made on window.onload to guarantee execution.
-                </script>
-                <div id="proficiency-container" class="contents">
-                    <!-- Placeholder for JS insertion -->
+            <div id="proficiency-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 mb-10">
                 </div>
-            </div>
 
-            <!-- Categorized Skills -->
             <h3 class="text-xl font-semibold text-indigo-400 mb-4">Categorized Skill List (54 Skills)</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- DESIGN & RESEARCH (27 Skills) -->
                 <div>
                     <h4 class="font-bold text-white mb-2 border-b border-gray-700 pb-1">Design & Research</h4>
                     <ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
@@ -383,7 +240,6 @@
                         <li>Color Schemes</li><li>Virtual Reality (VR)</li>
                     </ul>
                 </div>
-                <!-- TECHNICAL (4 Skills) -->
                 <div>
                     <h4 class="font-bold text-white mb-2 border-b border-gray-700 pb-1">Technical</h4>
                     <ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
@@ -391,7 +247,6 @@
                         <li>Prompt Engineering</li><li>AI Prompting</li>
                     </ul>
                 </div>
-                <!-- PROFESSIONAL (11 Skills) -->
                 <div>
                     <h4 class="font-bold text-white mb-2 border-b border-gray-700 pb-1">Professional</h4>
                     <ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
@@ -405,14 +260,12 @@
         </div>
     </div>
     
-    <!-- Download Modal -->
     <div id="download-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop">
         <div class="glass-card w-full max-w-md p-8 rounded-3xl">
             <h2 class="text-2xl font-bold text-white mb-4">Select Download Format</h2>
             <p class="text-gray-300 mb-6">Which version of the resume would you like to download?</p>
             
             <div class="space-y-4">
-                <!-- NOTE: Update these href links with the actual paths to your stored PDFs -->
                 <a href="/path/to/ats-compliant-resume.pdf" download class="block text-center w-full px-5 py-3 text-white bg-indigo-600 rounded-xl hover:bg-indigo-500 transition duration-300 shadow-lg font-semibold">
                     ATS Compliant Resume (PDF)
                 </a>
@@ -427,178 +280,6 @@
         </div>
     </div>
 
-
-    <!-- 5. JAVASCRIPT FOR 3D BACKGROUND AND SCROLL EFFECTS -->
-    <script>
-        // --- THREE.JS BACKGROUND SCRIPT (Adapted from your file) ---
-        let container, camera, scene, renderer, particles, particleCount = 10000;
-        let mouseX = 0, mouseY = 0;
-
-        function init() {
-            container = document.getElementById('three-container');
-            if (!container) return;
-
-            // Camera Setup
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 3000);
-            camera.position.z = 1000;
-
-            // Scene Setup
-            scene = new THREE.Scene();
-            scene.fog = new THREE.FogExp2(0x0f172a, 0.0005); // Slate-900 fog
-
-            // Particles Geometry & Material
-            const geometry = new THREE.BufferGeometry();
-            const vertices = [];
-
-            const pMaterial = new THREE.PointsMaterial({
-                color: 0x6366F1, // Indigo-500 accent
-                size: 3,
-                blending: THREE.AdditiveBlending,
-                transparent: true,
-                sizeAttenuation: true
-            });
-
-            for (let i = 0; i < particleCount; i++) {
-                const x = Math.random() * 2000 - 1000;
-                const y = Math.random() * 2000 - 1000;
-                const z = Math.random() * 2000 - 1000;
-                vertices.push(x, y, z);
-            }
-            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-
-            particles = new THREE.Points(geometry, pMaterial);
-            scene.add(particles);
-
-            // Renderer Setup
-            renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setPixelRatio(window.devicePixelRatio);
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
-
-            // Event Listeners
-            document.addEventListener('mousemove', onDocumentMouseMove, false);
-            window.addEventListener('resize', onWindowResize, false);
-        }
-
-        function onWindowResize() {
-            if (camera) {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-        }
-
-        function onDocumentMouseMove(event) {
-            mouseX = event.clientX - window.innerWidth / 2;
-            mouseY = event.clientY - window.innerHeight / 2;
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            render();
-        }
-
-        function render() {
-            if (!camera || !particles) return;
-
-            // Subtle camera movement (Parallax/Drift effect)
-            const targetX = mouseX * 0.001;
-            const targetY = mouseY * 0.001;
-
-            camera.position.x += (targetX - camera.position.x) * 0.05;
-            camera.position.y += (-targetY - camera.position.y) * 0.05;
-            camera.lookAt(scene.position);
-
-            // Subtle particle rotation
-            particles.rotation.z += 0.0005;
-            particles.rotation.x += 0.0002;
-            
-            renderer.render(scene, camera);
-        }
-
-        // --- SCROLL ANIMATION & PARALLAX EFFECT ---
-        function checkScrollAnimations() {
-            const elements = document.querySelectorAll('.scroll-animate');
-            const scrollPos = window.scrollY || window.pageYOffset;
-            const windowHeight = window.innerHeight;
-
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const elTop = rect.top + scrollPos;
-                const elBottom = rect.bottom + scrollPos;
-
-                // Threshold: Element is visible if its top is within 85% of the viewport height from the top,
-                // and its bottom is not yet past the top of the viewport.
-                const isVisible = elTop < (scrollPos + windowHeight * 0.85) && elBottom > scrollPos;
-
-                if (isVisible) {
-                    el.classList.add('scroll-visible');
-                } else {
-                    // FADE OUT/HIDE on scrolling up or down past the viewport
-                    el.classList.remove('scroll-visible');
-                    el.classList.add('scroll-animate');
-                }
-            });
-        }
-        
-        // --- PROJECT CAROUSEL DRAGGING ---
-        const carousel = document.getElementById('project-carousel');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        if (carousel) {
-            carousel.addEventListener('mousedown', (e) => {
-                isDown = true;
-                carousel.classList.add('active');
-                startX = e.pageX - carousel.offsetLeft;
-                scrollLeft = carousel.scrollLeft;
-            });
-            carousel.addEventListener('mouseleave', () => {
-                isDown = false;
-                carousel.classList.remove('active');
-            });
-            carousel.addEventListener('mouseup', () => {
-                isDown = false;
-                carousel.classList.remove('active');
-            });
-            carousel.addEventListener('mousemove', (e) => {
-                if(!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - carousel.offsetLeft;
-                const walk = (x - startX) * 2; // Scroll-speed multiplier
-                carousel.scrollLeft = scrollLeft - walk;
-            });
-        }
-
-
-        // --- Initialize Application ---
-        window.onload = function () {
-            // Render the dynamic proficiency bars based on the scores
-            if (typeof renderProficiencyBars !== 'undefined') {
-                const toolScores = {
-                    'Google Workspace': 10, 'Figma': 9, 'Adobe Color': 9, 'Miro Collaboration Platform': 8,
-                    'Adobe XD': 8, 'Jira': 7, 'Adobe Firefly': 7, 'Slack': 6, 'After Effects': 6, 
-                    'Adobe Premiere Pro': 6, 'Adobe Photoshop': 6, 'Adobe Illustrator': 6, 'Blender': 5
-                };
-                renderProficiencyBars(toolScores);
-            }
-
-            // Initialize Three.js background
-            if (typeof THREE !== 'undefined') {
-                init();
-                animate();
-            } else {
-                console.error("Three.js dependency not loaded. Dynamic background will not appear.");
-            }
-            
-            // Initial check for elements in viewport on load
-            checkScrollAnimations();
-        };
-        
-        // Add scroll event listener
-        window.addEventListener('scroll', checkScrollAnimations);
-        
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
