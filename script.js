@@ -1,4 +1,4 @@
-// --- TOOL SCORES DATA (Moved from HTML script tag) ---
+// --- TOOL SCORES DATA ---
 const toolScores = {
     'Google Workspace': 10, 'Figma': 9, 'Adobe Color': 9, 'Miro Collaboration Platform': 8,
     'Adobe XD': 8, 'Jira': 7, 'Adobe Firefly': 7, 'Slack': 6, 'After Effects': 6, 
@@ -105,7 +105,6 @@ if (carousel) {
     });
 
     // CONTROL BUTTONS LOGIC
-    // Calculate scroll distance based on one card width (using the 4:3 card as the anchor)
     const scrollDistance = 350; 
 
     if (prevButton) {
