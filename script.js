@@ -7,7 +7,7 @@ const toolScores = {
 
 // --- RENDER FUNCTIONS ---
 
-// Function to inject proficiency bars into the Skills Modal
+// Function to inject proficiency bars into the collapsible Skills section
 function renderProficiencyBars(scores) {
     const container = document.getElementById('proficiency-container');
     if (!container) return;
