@@ -72,30 +72,22 @@ body {
     -webkit-backdrop-filter: blur(10px);
 }
 
-/* --- PROJECT CAROUSEL REDESIGN STYLES (Based on 20251022_145052.jpg) --- */
-/* The general card height will be dictated by content, but we use a padding-top trick for aspect ratio */
-/* For simplicity and responsiveness, we define a fixed width for the cards */
+/* --- PROJECT CAROUSEL REDESIGN STYLES --- */
 #project-carousel {
-    /* Space-x-3 already defines 12px gap based on Tailwind default. */
-    padding-left: 0.75rem; /* Equivalent to space-x-3 at the start */
-    padding-right: 0.75rem; /* Equivalent to space-x-3 at the end */
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
 
 .project-card-4-3 {
     width: 300px; /* Base width */
-    /* 4:3 Aspect Ratio (Height = Width * 0.75) - We will let content dictate height for resume, 
-       but if you need strict aspect ratio for a placeholder visual: */
-    /* aspect-ratio: 4 / 3; */
-    min-width: 300px; /* Ensure fixed width on scroll */
+    min-width: 300px;
 }
 
 .project-card-1-1 {
-    width: 225px; /* (300px * 0.75) for a 1:1 card next to a 4:3 card */
-    /* 1:1 Aspect Ratio: */
-    /* aspect-ratio: 1 / 1; */
-    min-width: 225px; /* Ensure fixed width on scroll */
+    width: 225px; 
+    min-width: 225px;
 }
 
 @media (min-width: 1024px) { /* Adjust for larger screens (lg:) */
@@ -104,7 +96,7 @@ body {
         min-width: 400px;
     }
     .project-card-1-1 {
-        width: 300px; /* (400px * 0.75) */
+        width: 300px;
         min-width: 300px;
     }
 }
