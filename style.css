@@ -65,13 +65,6 @@ body {
     transition: width 1s ease-out;
 }
 
-/* Modal Backdrop */
-.modal-backdrop {
-    background-color: rgba(0, 0, 0, 0.85); /* Darker blur for focus */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
 /* --- PROJECT CAROUSEL REDESIGN STYLES --- */
 #project-carousel {
     padding-left: 0.75rem;
