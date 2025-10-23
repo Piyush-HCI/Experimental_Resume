@@ -127,6 +127,54 @@ if (carousel) {
 }
 
 
+// --- FILTERING LOGIC (New Implementation) ---
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+function filterProjects(filter) {
+    // 1. Reset card visibility and update class list
+    projectCards.forEach(card => {
+        const categories = card.getAttribute('data-category');
+        
+        // Use a simple hidden class that sets display: none or visibility: hidden/opacity: 0
+        // We'll use Tailwind's `hidden` class for simplicity (display: none)
+        const shouldShow = categories.includes(filter);
+
+        if (shouldShow) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+    
+    // 2. Adjust Carousel Scroll position to the start
+    if (carousel) {
+        carousel.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// 3. Attach click handlers to buttons
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const filterValue = button.getAttribute('data-filter');
+        
+        // Apply filtering logic
+        filterProjects(filterValue);
+
+        // Update active state visuals
+        filterButtons.forEach(btn => {
+            btn.classList.remove('bg-indigo-600', 'text-white');
+            btn.classList.add('text-indigo-400', 'hover:bg-indigo-800/30');
+        });
+        button.classList.add('bg-indigo-600', 'text-white');
+        button.classList.remove('text-indigo-400', 'hover:bg-indigo-800/30');
+    });
+});
+
+
 // --- Initialize Application ---
 window.onload = function () {
     // 1. Render the dynamic proficiency bars
