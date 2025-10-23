@@ -23,13 +23,7 @@ function renderProficiencyBars(scores) {
     container.innerHTML = html;
 }
 
-// Placeholder function for the Spotlight Effect
-// NOTE: The original component is built for React/Next.js (JSX/TSX).
-// Implementing it directly in vanilla JS requires a custom canvas solution 
-// or a library, which is a major project. For a quick implementation using 
-// the given HTML/CSS/JS file structure, we'll create a simple CSS-based 
-// dark background with a subtle radial gradient 'spotlight' as a visual 
-// placeholder that *doesn't* require Three.js/React.
+// Placeholder function for the Spotlight Effect (CSS approximation)
 function initSpotlightBackground() {
     const container = document.getElementById('spotlight-container');
     if (!container) return;
@@ -41,21 +35,21 @@ function initSpotlightBackground() {
     container.style.width = '100%';
     container.style.height = '100%';
     container.style.zIndex = '-1';
-    container.style.backgroundColor = 'rgba(0,0,0,0.96)'; // From your snippet's bg-black/[0.96]
+    container.style.backgroundColor = 'rgba(0,0,0,0.96)';
     
     // Create a subtle radial gradient 'spotlight' (CSS approximation)
     container.style.background = `
         radial-gradient(
             circle at 50% 50%, 
-            rgba(99, 102, 241, 0.15) 0%, /* Light Indigo center */
-            rgba(15, 23, 42, 1) 75% /* Dark Blue/Black edges */
+            rgba(99, 102, 241, 0.15) 0%, 
+            rgba(15, 23, 42, 1) 75%
         ),
         ${container.style.backgroundColor}
     `;
 }
 
 
-// --- SCROLL ANIMATION & PARALLAX EFFECT (Unchanged) ---
+// --- SCROLL ANIMATION & PARALLAX EFFECT ---
 function checkScrollAnimations() {
     const elements = document.querySelectorAll('.scroll-animate');
     const scrollPos = window.scrollY || window.pageYOffset;
@@ -87,7 +81,7 @@ let startX;
 let scrollLeft;
 
 if (carousel) {
-    // DRAGGING LOGIC (Unchanged)
+    // DRAGGING LOGIC
     carousel.addEventListener('mousedown', (e) => {
         isDown = true;
         carousel.classList.add('active');
@@ -111,7 +105,8 @@ if (carousel) {
     });
 
     // CONTROL BUTTONS LOGIC
-    const scrollDistance = 350; // Scroll distance to approximate one-card movement
+    // Calculate scroll distance based on one card width (using the 4:3 card as the anchor)
+    const scrollDistance = 350; 
 
     if (prevButton) {
         prevButton.addEventListener('click', () => {
